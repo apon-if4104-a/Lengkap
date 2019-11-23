@@ -33,12 +33,28 @@
 <body>
   <nav class="navbar" style="border-bottom:2px solid #13B1E2;">
     <a class="navbar-brand" href="#">
-      <img src="file:///C:/Users/asus/Pictures/Apon.png" alt="Logo" style="width:100px; padding-left:20px; height:40px; margin-top:-20px;">
+      <img src="<?php echo base_url('assets/Apon.png'); ?>" alt="Logo" style="width:100px; padding-left:20px; height:40px; margin-top:-20px;">
     </a>
     <button id="btndaftar" type="button" name="button" class="btn btn-outline-light text-dark" style="border:1px solid #F35410; margin-left:10px; width:100px;"><span style="color:#F35410;">Keluar</span></button>
   </nav>
 
   <center>
+    <?php if ($this->session->flashdata('flash')) : ?>
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        Obat Berhasil Ditambahkan
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php endif; ?>
+    <?php if ($this->session->flashdata('flash_gagal')) : ?>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Obat Gagal Ditambahkan
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php endif; ?>
     <h1 class="Hello" style="margin-top:30px;">Hello <span style="color:#f35410">Admin!</span></h1>
     <hr size="30px" width="50%" style="background-color:#f35410">
   </center>
@@ -136,46 +152,48 @@
     </div>
     <div class="Delete_obat col-md-4">
       <center><button id="Tombol" data-toggle="modal" data-target="#Delete_obat" type="button" class="btn btn-light" style="padding-bottom:80px; background-color:white; border:1px solid #f35410;">Delete <span style="color:#f35410">Obat</span></button></center>
-      <!-- The Modal -->
-      <div class="modal" id="Delete_obat">
-        <div class="modal-dialog">
-          <div class="modal-content">
+      <form action="" method="post">
+        <!-- The Modal -->
+        <div class="modal" id="Delete_obat">
+          <div class="modal-dialog">
+            <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header" style="border:none">
-              <h4 class="modal-title"><b style="color:#F35410">Delete Obat</b></h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+              <!-- Modal Header -->
+              <div class="modal-header" style="border:none">
+                <h4 class="modal-title"><b style="color:#F35410">Delete Obat</b></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
 
-            <!-- Modal body -->
-            <div class="modal-body">
-              <div class="Username" style="border:2px solid #7D7D7D; border-left:10px solid #F35410;">
-                <div class="formgroup">
-                  <label for="Nama" style="float:left; margin-left:10px;">ID Obat</label>
-                  <br>
-                  <input id="Nama" type="text" class="form" name="nama1" placeholder="Masukan ID Obat" required style="border:none; color:#F35410; width:96%; margin-left:10px;">
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div class="Username" style="border:2px solid #7D7D7D; border-left:10px solid #F35410;">
+                  <div class="formgroup">
+                    <label for="Nama" style="float:left; margin-left:10px;">ID Obat</label>
+                    <br>
+                    <input id="Nama" type="text" class="form" name="DID" placeholder="Masukan ID Obat" required style="border:none; color:#F35410; width:96%; margin-left:10px;">
+                  </div>
+                </div>
+                <br>
+                <div class="Pass" style="border:2px solid #7D7D7D; border-left:10px solid #F35410;">
+                  <div class="formgroup">
+                    <label for="namaObt" style="float:left; margin-left:10px;">Nama Obat</label>
+                    <br>
+                    <input type="text" class="form" id="namaObt" name="DNama" placeholder="Masukan Nama Obat" required style="border:none; color:#F35410; width:96%; margin-left:10px;">
+                  </div>
                 </div>
               </div>
-              <br>
-              <div class="Pass" style="border:2px solid #7D7D7D; border-left:10px solid #F35410;">
-                <div class="formgroup">
-                  <label for="namaObt" style="float:left; margin-left:10px;">Nama Obat</label>
-                  <br>
-                  <input type="text" class="form" id="namaObt" name="namaObt" placeholder="Masukan Nama Obat" required style="border:none; color:#F35410; width:96%; margin-left:10px;">
-                </div>
+              <div class="modal-footer" style="border:none">
+                <button type="submit" class="btn" style="background-color:#F35410"><span style="color:white">Delete</span></button>
               </div>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer" style="border:none">
-              <button type="submit" class="btn" style="background-color:#F35410"><span style="color:white">Delete</span></button>
-            </div>
-          </div>
-        </div>
-      </div>
+      </form>
+      <!-- Modal footer -->
     </div>
-    <div class="Update_obat col-md-4">
-      <center><button id="Tombol" data-toggle="modal" data-target="#Update_obat" type="button" class="btn btn-light" style="padding-bottom:80px; background-color:white; border:1px solid #f35410;">Update <span style="color:#f35410">Obat</span></button></center>
+  </div>
+  </div>
+  </div>
+  <div class="Update_obat col-md-4">
+    <center><button id="Tombol" data-toggle="modal" data-target="#Update_obat" type="button" class="btn btn-light" style="padding-bottom:80px; background-color:white; border:1px solid #f35410;">Update <span style="color:#f35410">Obat</span></button></center>
+    <form action="" method="post">
       <!-- The Modal -->
       <div class="modal" id="Update_obat">
         <div class="modal-dialog">
@@ -192,7 +210,7 @@
               <div class="card" style="float:right; padding-bottom:90px; padding-left:10px;">
                 <div class="card-body">
                   <h5>Foto Obat</h5>
-                  <input id="alamat" type="file" name="" value="" style=" border:none; ">
+                  <input id="alamat" type="file" name="FotoUpdate" value="" style=" border:none; ">
                 </div>
               </div>
               <div class="row">
@@ -201,7 +219,7 @@
                     <div class="formgroup">
                       <label for="Nama" style="float:left; margin-left:10px;">ID Obat</label>
                       <br>
-                      <input id="Nama" type="text" class="form" name="nama2" placeholder="Masukan ID Obat" required style="border:none; color:#13B1E2; width:96%; margin-left:10px;">
+                      <input id="Nama" type="text" class="form" name="NamaID" placeholder="Masukan ID Obat" required style="border:none; color:#13B1E2; width:96%; margin-left:10px;">
                     </div>
                   </div>
                 </div>
@@ -212,7 +230,7 @@
                     <div class="formgroup">
                       <label for="Nama" style="float:left; margin-left:10px;">Nama Obat</label>
                       <br>
-                      <input id="Nama" type="email" class="form" name="email" placeholder="Masukan Nama Obat" required style="border:none; color:#13B1E2; width:96%; margin-left:10px;">
+                      <input id="Nama" type="text" class="form" name="NamaObat" placeholder="Masukan Nama Obat" required style="border:none; color:#13B1E2; width:96%; margin-left:10px;">
                     </div>
                   </div>
                 </div>
@@ -223,7 +241,7 @@
                     <div class="formgroup">
                       <label for="Nama" style="float:left; margin-left:10px;">Keterangan Obat</label>
                       <br>
-                      <input id="Nama" type="email" class="form" name="email" placeholder="Masukan Keterangan Obat" required style="border:none; color:#13B1E2; width:96%; margin-left:10px;">
+                      <input id="Nama" type="text" class="form" name="KetObat" placeholder="Masukan Keterangan Obat" required style="border:none; color:#13B1E2; width:96%; margin-left:10px;">
                     </div>
                   </div>
                 </div>
@@ -234,7 +252,7 @@
                     <div class="formgroup">
                       <label for="ket" style="float:left; margin-left:10px;">Harga Obat</label>
                       <br>
-                      <input type="text" class="form" id="ket" name="ket" placeholder="Masukan Harga Obat" required style="border:none; color:#13B1E2; width:96%; margin-left:10px;">
+                      <input type="text" class="form" id="ket" name="HargaObat" placeholder="Masukan Harga Obat" required style="border:none; color:#13B1E2; width:96%; margin-left:10px;">
                     </div>
                   </div>
                 </div>
@@ -243,20 +261,21 @@
                 <div class="col-sm-6">
                   <div class="Pass" style=" border-left:10px solid #13B1E2; width:400px;">
                     <div class="formgroup">
-                      <textarea class="form-control" rows="10" id="comment" style="margin-bottom:30px; border:1px solid grey;" placeholder="Deskripsi Obat">
+                      <textarea class="form-control" name="DesObat" rows="10" id="comment" style="margin-bottom:30px; border:1px solid grey;" placeholder="Deskripsi Obat">
                             </textarea>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Modal footer -->
             <div class="modal-footer" style="border:none">
               <button type="submit" class="btn" style="background-color:#13B1E2"><span style="color:white">Submit</span></button>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </form>
+    <!-- Modal footer -->
+  </div>
+  </div>
+  </div>
+  </div>
   </div>
 </body>
